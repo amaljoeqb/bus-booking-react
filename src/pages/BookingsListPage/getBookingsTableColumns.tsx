@@ -116,6 +116,7 @@ const getBookingsTableColumns = (
             maxWidth: 88,
             disableExport: true,
             renderCell: (params: GridValueGetterParams): JSX.Element => {
+                const currentDate = new Date();
                 return params.row.status === ITicketStatus.CONFIRMED ? (
                     <Button
                         variant="contained"
@@ -123,6 +124,10 @@ const getBookingsTableColumns = (
                             setShowDeleteTicketModal(params.row.pnrNumber);
                         }}
                         size="small"
+                        disabled={
+                            params.row.trip.departureTimestamp.valueOf() <
+                            currentDate.valueOf() - 30 * 60 * 1000
+                        }
                         sx={{ textTransform: 'none' }}
                     >
                         Cancel
