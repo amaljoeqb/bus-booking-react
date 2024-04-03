@@ -225,6 +225,7 @@
         "gender": "Género",
         "male": "Masculino",
         "female": "Femenino",
+        "downloadTicket": "Descargar billete en formato PDF",
         "viewDetailedTicket": "Ver Boleto Detallado",
         "goHome": "Ir a inicio"
     },

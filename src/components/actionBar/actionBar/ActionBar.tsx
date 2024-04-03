@@ -27,6 +27,7 @@ import { setBusSearchParams } from '../../../app/features/busSearchSlice';
 import { ToggleButton } from './ActionBar.styled';
 import { toast } from 'react-toastify';
 import FilterSort from '../filterSort/FilterSort';
+import { getDateFromTimestamp } from '../../../utils';
 
 interface IActionBarProps {
     showFilterSort?: boolean;
@@ -158,9 +159,9 @@ const ActionBar: React.FC<IActionBarProps> = ({ showFilterSort }) => {
             navigate(
                 `${paths.tripsListing}?originId=${
                     startLocation.id
-                }&destinationId=${
-                    stopLocation.id
-                }&tripDate=${tripDate.toString()}`
+                }&destinationId=${stopLocation.id}&tripDate=${
+                    getDateFromTimestamp(tripDate, 'dd-MMM-yyyy').formattedDate
+                }`
             );
             setLoadingState(false);
         }
